@@ -1,4 +1,0 @@
-Penny Computing
-
-hi
-
