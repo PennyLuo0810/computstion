@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+<style>
+
+html,body{
+  margin: 0;
+  height: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1{
+  padding-bottom: 300px;
+  color: pink;
+  position:relative;
+
+}
+
+body
+  {background-image: url("tv/tv.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+    background-size: 520px 350px;
+}
+
+.channels{
+  position: absolute;
+  overflow: hidden;
+
+}
+
+</style>
+
+</head>
+<body>
+    <h1  id="number">1</h1>
+    <img src="tv/1.gif" id="channels">
+    
+<script>
+
+
+var mynumber = document.getElementById("number"); 
+
+var number =["1",
+             "2",
+             "3",
+             "4",
+             "5",
+             "6",
+             "7",
+             "8",
+             ];
+
+
+
+var myImage = document.getElementById("channels");
+
+var channels = [
+    "tv/1.gif",
+    "tv/2.gif",
+    "tv/3.gif",
+    "tv/4.gif",
+    "tv/5.gif",
+    "tv/6.gif",
+    "tv/7.gif",
+    "tv/8.gif",
+    ];
+
+
+var num = 0;
+
+document.onkeydown = function(ent) {
+var  event =ent || window.event;
+
+
+if(event.keyCode ==38 && num <7) {
+	
+  num++;
+  document.getElementById("number").innerHTML = number[num]; 
+  document.getElementById("channels").src = channels[num];  
+  if(num == 7){ num = -1;}
+
+}  else if(event.keyCode ==40 && num>=0) {
+	
+   num--;
+  document.getElementById("number").innerHTML = number[num];
+  document.getElementById("channels").src = channels[num];
+   
+  if(num == 0){ num = 8;}
+}else {
+  document.getElementById("number").innerHTML = number[num];
+  document.getElementById("channels").src = channels[num];
+}
+
+}
+
+</script>
+</body>
+</html>
