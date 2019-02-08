@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+html{
+	background-color: black;
+	width: 100vmin;
+	height: 100vmin;
+	display:flex;
+	justify-content: center;
+	align-content: center;
+	margin:auto;
+}
+div{
+	color:white;
+	font-size: 50vmin;
+}
+</style>
+<script>
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    //object["key"] = object.key
+    m = checkTime(m);
+    s = checkTime(s);
+    h = checkTime(h);
+    document.getElementById('txt').innerHTML =
+    h + ":" + m + ":" + s;
+    //the + is appending strings
+    var t = setTimeout(startTime, 1000);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+</script>
+</head>
+
+<body onload="startTime()">
+
+<div id="txt"></div>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<input type="file" id="open-file">
+<script>
+
+var reader = new FileReader();
+
+document.getElementById("open-file").onchange = function(){
+      reader.readAsText(this.files[0]);
+}
+
+reader.onload = function(event){
+
+
+buildDictionary(event.target.result);
+
+function buildDictionary(text){
+	//console.log(text)
+      console.log(text);
+      var words = text.split(/\s+/);
+      console.log(words);
+      // loop over every wprd, put it in the dictionary
+      var dictionary ={};
+
+      var i = 0 
+      while(i < words.length){
+      	//get teh word from the word array
+      	var thisword = words[i];
+      	//get the first letter from this word 
+        var firstletter = thisword[0];
+        //if we're seeing this letter for the first time, create an empty arry
+        if(dictionary[firstletter] == undefined){
+        	dictionary[firstletter] =[];
+        }
+
+        //add the world into the dictionary , at the firstletter spot,add to teh arry.
+        dictionary[firstletter].push(thisword);
+
+      	i = i + 1;
+
+      }
+
+ console.log(dictionary);
+
+}
+
+}
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+<style>
+html,body{
+	margin: 0;
+	height: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes twirl{
+	50%{transform: rotate(180deg);}
+	100%{transform: initial; }
+}
+@keyframes stop{
+	50%{transform: translate(0,300px);}
+	100%{transform: initial; }
+}
+#square{
+	animation: twirl 2s infinite;
+	background-color: pink;
+	width: 50vmin;
+	height: 50vmin;
+}
+#another{
+	animation: twirl 10s infinite;
+}
+
+#outer{
+	animation: stop 1s infinite;
+	background-color: black;
+}
+
+</style>
+
+</head>
+<body>
+
+<div id="square"></div>
+<p id="another">Penny</p>
+<div id="outer">&nbsp;&nbsp;</div>
+
+</body>
+</html>

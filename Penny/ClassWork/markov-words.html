@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<input type="file" id="open-file">
+<h1 id="poem"></h1>
+<script>
+
+// load a file
+//储存input的
+var reader = new FileReader();
+
+//把选择的文件存到reader里
+document.getElementById("open-file").onchange = function(){
+	reader.readAsText(this.files[0]);
+}
+
+//读完了文件
+reader.onload = function(event){
+	buildDictionary(event.target.result);//读完好的文字传到buildDictionary.
+	markov()//运行
+}
+
+// now the file has been loaded
+var dictionary = {};
+
+//自创的function定义
+function buildDictionary(text){
+	// console.log(text);
+	var words = text.split(/\s+/);//split自带function，把文字拆开（空格拆开）
+	console.log(words);
+	// loop over every word, put it in the buildDictionary
+
+	var i = 0;//【循环】运行while里的码
+	while(i < words.length - 1){
+		//i=0 数学
+		// get the word from the word array
+		var thisword = words[i];
+		var nextword = words[i+1];
+		// if we're seeing this letter for the first time, create an empty array
+		if(dictionary[thisword] == undefined){
+		//检查==是不是一样，【走一遍】
+			dictionary[thisword] = [];
+		}
+		// add the word into the dictionary, at the first letter's spot, add to the array
+		dictionary[thisword].push(nextword);
+
+		i = i + 1;//让i每次运行+1
+	}
+	console.log(dictionary);
+}
+//生成一个随机数范围0-max
+function randomInt(max){
+	return parseInt(Math.random() * max);
+}
+
+function markov(){
+	var keys = Object.keys(dictionary);
+	var firstword = keys[ randomInt(keys.length) ];//随机得到一个词
+	// console.log([firstword]);
+	var words = [firstword ];//把
+
+	// loop start
+	var counter = 0;
+	while(counter < 20){
+		var thisword = words[words.length - 1];
+		var nextwordarray = dictionary[thisword];
+		var nextword = nextwordarray[ randomInt(nextwordarray.length)];
+		words.push(nextword);
+		counter = counter + 1;
+	}
+	console.log(words);
+	// loop end
+
+	var poem = words.join(" ");
+	document.getElementById("poem").innerHTML = poem//把生成的poem放到网页里
+}
+
+
+</script>
+</body>
+</html>

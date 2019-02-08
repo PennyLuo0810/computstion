@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+<style>
+
+html,body{
+  margin: 0;
+  height: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+   
+</style>
+
+</head>
+<body>
+    <img src="tv/1.gif" id="channels">
+<script>
+
+var myImage = document.getElementById("channels");
+
+var channels = [
+    "tv/1.gif",
+    "tv/2.gif",
+    "tv/3.gif",
+    "tv/4.gif",
+    "tv/5.gif",
+    "tv/6.gif",
+    "tv/7.gif",
+    "tv/8.gif",
+    ];
+
+var num = 0;
+
+document.onkeydown = function(ent) {
+var  event =ent || window.event;
+
+
+if(event.keyCode ==38 && num <7) {
+	
+  num++;
+  document.getElementById("channels").src = channels[num];
+  if(num == 7) num = 0;
+
+}  else if(event.keyCode ==40 && num>0) {
+	
+   num--;
+  document.getElementById("channels").src = channels[num];
+  if(num == 0) num = 7;
+}else {
+  document.getElementById("channels").src = channels[num];
+}
+
+}
+
+</script>
+</body>
+</html>

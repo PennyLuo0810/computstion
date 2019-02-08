@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+body{ 
+   margin:0;
+}
+	
+div{
+	background-color: pink;
+	width:50px;
+	height: 50px;
+	position: absolute;
+	border-radius: 50%;
+}
+</style>
+
+	<title></title>
+
+</head>
+<body>
+<div id="ball"></div>
+</body>
+
+<script>
+
+var x = 0;
+var y = 0;
+var width = 50;
+var height = 50;
+var speed = 8;
+var xChange = speed; 
+var yChange = speed; 
+
+function gameLoop(){
+     x = x + xChange;
+     y = y + yChange;
+     document.getElementById("ball").style.top = y + "px";
+     document.getElementById("ball").style.left = x + "px";
+
+    if (x > window.innerWidth -width){
+     	xChange = -speed * Math.random();
+     }
+
+    if (y > window.innerHeight - height){
+        yChange = -speed * Math.random();
+    }
+
+    if (x < 0) {
+       xChange = speed * Math.random();
+    }
+
+    if (y < 0) {
+       yChange = speed * Math.random();
+    }
+
+ }
+document.getElementById("ball").style.top =
+ 
+//here is how you run a function
+//gameloop();
+
+//here is how you run a function on a loop infinite times
+
+setInterval(gameLoop, 1000/60)
+
+</script>	
+</html>
+
+
+
+
+
+
+
+
+
+
+
